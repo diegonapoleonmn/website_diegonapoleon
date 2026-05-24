@@ -17,8 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
+            
+            // If link points to another page or external site, let the browser handle it
+            if (targetId && !targetId.startsWith('#')) return;
+            
+            e.preventDefault();
             if(targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
@@ -68,5 +72,119 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => {
         revealObserver.observe(el);
     });
+
+    // --- 4. Secret Clinical Portal Triggers ---
+    
+    // Trigger A: Double click on the Header Logo
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('dblclick', () => {
+            window.location.href = 'portal.html';
+        });
+        logo.style.cursor = 'default';
+        logo.style.userSelect = 'none';
+    }
+
+    // Trigger B: Keyboard shortcut typing "doc" in sequence
+    let keysTyped = '';
+    window.addEventListener('keydown', (e) => {
+        // Ignore if user is currently typing in a form input or textarea
+        if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
+            return;
+        }
+        // Prevent buffer bloat, only capture alphanumeric keys
+        if (e.key.length === 1) {
+            keysTyped += e.key.toLowerCase();
+            keysTyped = keysTyped.slice(-3);
+            if (keysTyped === 'doc') {
+                window.location.href = 'portal.html';
+            }
+        }
+    });
+
+    // --- 5. Masked Email Reveal on Click ---
+    const maskedEmail = document.querySelector('.masked-email');
+    if (maskedEmail) {
+        maskedEmail.addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = this.dataset.user;
+            const domain = this.dataset.domain;
+            const realEmail = user + '@' + domain;
+            this.textContent = realEmail;
+            this.href = 'mailto:' + realEmail;
+            this.style.borderBottom = '1px solid var(--clr-accent)';
+            this.removeEventListener('click', arguments.callee);
+        });
+    }
+
+    // --- 6. Contact Form Handler (AJAX + Mailto Fallback) ---
+    const contactForm = document.querySelector('.footer-form form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Honeypot bot check: if _gotcha is filled, silently reject
+            const honeypot = this.querySelector('input[name="_gotcha"]');
+            if (honeypot && honeypot.value !== '') {
+                return; // Silent discard — bot filled the hidden field
+            }
+
+            const formAction = this.getAttribute('action');
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Check if Formspree action is still the default template placeholder
+            if (formAction.includes('your-form-id')) {
+                // Instantly operational mailto fallback!
+                const subject = `Portfolio Inquiry from ${name}`;
+                const body = `Hello Dr. Diego Medina,\n\n${message}\n\n---\nFrom: ${name} (${email})`;
+                const mailtoUrl = `mailto:diegonapoleon.dm@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoUrl;
+                return;
+            }
+            
+            // Seamless AJAX fetch if a valid Formspree ID is set
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.disabled = true;
+            submitBtn.innerText = "SENDING...";
+            
+            const formData = new FormData(this);
+            fetch(formAction, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Modern inline success message animation
+                    const formContainer = document.querySelector('.footer-form');
+                    formContainer.style.transition = 'opacity 0.5s ease';
+                    formContainer.style.opacity = '0';
+                    setTimeout(() => {
+                        formContainer.innerHTML = `
+                            <div style="text-align: center; padding: 40px; background: rgba(0, 245, 212, 0.05); border: 1px solid var(--clr-accent); border-radius: 8px; box-shadow: 0 0 20px rgba(0, 245, 212, 0.05); transition: opacity 0.5s ease;">
+                                <i class="fa-regular fa-paper-plane" style="font-size: 3rem; color: var(--clr-accent); margin-bottom: 20px; display: inline-block;"></i>
+                                <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 10px;">Message Sent!</h3>
+                                <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6;">Thank you for reaching out, Dr. Medina. Your message has been sent successfully and he will get back to you shortly.</p>
+                            </div>
+                        `;
+                        formContainer.style.opacity = '1';
+                    }, 500);
+                } else {
+                    throw new Error('Server error');
+                }
+            })
+            .catch(error => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+                alert("Submission failed. Please verify your internet connection or email directly at diegonapoleon.dm@gmail.com.");
+            });
+        });
+    }
 
 });

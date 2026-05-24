@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Clínico</title>
+    <meta name="robots" content="noindex, nofollow"> <!-- Prevent search engine indexing -->
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Portal CSS -->
+    <link rel="stylesheet" href="portal.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+       1. LOCK SCREEN (PIN GATE)
+       ========================================================================== -->
+    <div class="lock-screen" id="lockScreen">
+        <div class="lock-card" id="lockCard">
+            <div class="lock-header">
+                <i class="fa-solid fa-shield-halved"
+                    style="font-size: 2.5rem; color: var(--clr-accent); margin-bottom: 15px; filter: drop-shadow(0 0 8px rgba(0, 245, 212, 0.3));"></i>
+                <h2 class="lock-logo">Acceso</h2>
+                <span class="lock-subtitle">Links y Herramientas</span>
+            </div>
+
+            <!-- PIN Dot Indicators -->
+            <div class="pin-display">
+                <div class="pin-dot" id="dot1"></div>
+                <div class="pin-dot" id="dot2"></div>
+                <div class="pin-dot" id="dot3"></div>
+                <div class="pin-dot" id="dot4"></div>
+            </div>
+
+            <!-- Virtual Keypad -->
+            <div class="keypad">
+                <button class="key-btn" onclick="pressKey(1)">1</button>
+                <button class="key-btn" onclick="pressKey(2)">2</button>
+                <button class="key-btn" onclick="pressKey(3)">3</button>
+                <button class="key-btn" onclick="pressKey(4)">4</button>
+                <button class="key-btn" onclick="pressKey(5)">5</button>
+                <button class="key-btn" onclick="pressKey(6)">6</button>
+                <button class="key-btn" onclick="pressKey(7)">7</button>
+                <button class="key-btn" onclick="pressKey(8)">8</button>
+                <button class="key-btn" onclick="pressKey(9)">9</button>
+                <button class="key-btn action-btn" onclick="clearPIN()">CLR</button>
+                <button class="key-btn" onclick="pressKey(0)">0</button>
+                <button class="key-btn action-btn" onclick="deleteLastDigit()"><i
+                        class="fa-solid fa-delete-left"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       2. CLINICAL PORTAL DASHBOARD (Visible post-unlock)
+       ========================================================================== -->
+    <main class="portal-dashboard" id="portalDashboard">
+        <div class="container">
+
+            <!-- Dashboard Header -->
+            <header class="portal-header">
+                <div class="portal-title-block">
+                    <h1>Portal Clínico</h1>
+                    <p>Links y Herramientas</p>
+                </div>
+
+                <div class="header-widgets">
+                    <!-- Live Local Clock -->
+                    <div class="widget-glass">
+                        <span>Hora Actual</span>
+                        <div class="widget-val clock-val" id="liveClock">00:00:00</div>
+                    </div>
+
+                    <!-- Shift Duration Timer -->
+                    <div class="widget-glass shift-tracker">
+                        <div style="text-align: right; margin-right: 5px;">
+                            <span>De servicio</span>
+                            <div class="widget-val" id="shiftDuration">00h 00m 00s</div>
+                        </div>
+                        <button class="shift-btn" id="shiftBtn" onclick="toggleShift()">Iniciar</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Links Grid -->
+            <section class="portal-grid">
+                <!-- Link 1: Drive Documents -->
+                <a href="https://drive.google.com/drive/folders/1Uw3Di5qrI7YaVi9f_q6gyyc3OGYASidv" target="_blank"
+                    class="portal-card">
+                    <div class="card-top">
+                        <span class="card-tag">Documentos</span>
+                        <i class="fa-brands fa-google-drive card-icon"></i>
+                    </div>
+                    <div>
+                        <h4 class="card-title">Drive</h4>
+                    </div>
+                </a>
+
+                <!-- Link 2: Hospital Credentials Sheet -->
+                <a href="https://docs.google.com/spreadsheets/d/11ftEmmgF3V7DY1__miXtkAm2NFVVRsMwUQ4EovEMVHA/edit?gid=657770736#gid=657770736"
+                    target="_blank" class="portal-card">
+                    <div class="card-top">
+                        <span class="card-tag">Credenciales</span>
+                        <i class="fa-solid fa-key card-icon"></i>
+                    </div>
+                    <div>
+                        <h4 class="card-title">Usuarios</h4>
+                    </div>
+                </a>
+
+                <!-- Link 3: Hospital Information System (SGSS) -->
+                <a href="http://10.56.1.158/sgss/servlet/hmain" target="_blank" class="portal-card">
+                    <div class="card-top">
+                        <span class="card-tag">Sistema</span>
+                        <i class="fa-solid fa-laptop-medical card-icon"></i>
+                    </div>
+                    <div>
+                        <h4 class="card-title">ESSI</h4>
+                    </div>
+                </a>
+
+                <!-- Link 4: Kanteron Imaging -->
+                <a href="http://172.25.42.5:8080/kWebViewer/main.jsp?lang=es" target="_blank" class="portal-card">
+                    <div class="card-top">
+                        <span class="card-tag">Imágenes</span>
+                        <i class="fa-solid fa-x-ray card-icon"></i>
+                    </div>
+                    <div>
+                        <h4 class="card-title">Kanteron</h4>
+                    </div>
+                </a>
+
+                <!-- Link 5: AnatPat Pathology -->
+                <a href="http://anatpat.essalud/ANATPAT/login.xhtml" target="_blank" class="portal-card">
+                    <div class="card-top">
+                        <span class="card-tag">Patología</span>
+                        <i class="fa-solid fa-microscope card-icon"></i>
+                    </div>
+                    <div>
+                        <h4 class="card-title">AnatPat</h4>
+                    </div>
+                </a>
+            </section>
+
+            <!-- Quick Notes Scratchpad (Autosaving text editor) -->
+            <section class="notes-container">
+                <div class="notes-header">
+                    <div class="notes-title-block">
+                        <h3><i class="fa-regular fa-pen-to-square"></i> Notas</h3>
+                    </div>
+                    <div class="notes-status" id="notesStatus">
+                        <i class="fa-solid fa-circle-check"></i> Conectado
+                    </div>
+                </div>
+                <textarea class="notes-textarea" id="scratchpad"
+                    placeholder="Empieza a escribir... Las notas se guardan automáticamente en el almacenamiento de tu navegador, lo que significa que permanecerán aquí aunque cierres esta pestaña o reinicies el navegador"></textarea>
+            </section>
+
+            <!-- Dashboard Control Footer -->
+            <footer class="portal-footer">
+                <p>&copy; 2026 Diego Napoleon Medina. Institutional and staff resources portal.</p>
+                <div style="display: flex; gap: 15px;">
+                    <button class="back-btn lock-btn" onclick="lockPortal()"><i class="fa-solid fa-lock"></i> Lock
+                        Portal</button>
+                    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Return Home</a>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Toast message overlay -->
+    <div class="toast-msg" id="toastMsg">Link copied to clipboard! 📋</div>
+
+    <!-- ==========================================================================
+       3. CLIENT-SIDE PORTAL LOGIC & ANIMATIONS
+       ========================================================================== -->
+    <script>
+        const CORRECT_PIN = "2026";
+        let enteredPin = [];
+        let saveTimeout = null;
+        let shiftInterval = null;
+
+        // Elements
+        const lockScreen = document.getElementById('lockScreen');
+        const lockCard = document.getElementById('lockCard');
+        const portalDashboard = document.getElementById('portalDashboard');
+        const scratchpad = document.getElementById('scratchpad');
+        const notesStatus = document.getElementById('notesStatus');
+        const liveClock = document.getElementById('liveClock');
+        const shiftDuration = document.getElementById('shiftDuration');
+        const shiftBtn = document.getElementById('shiftBtn');
+        const toastMsg = document.getElementById('toastMsg');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check session security
+            if (sessionStorage.getItem('clinical_portal_unlocked') === 'true') {
+                bypassLockScreen();
+            }
+
+            // Start Live Clock
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Initialize Scratchpad Notes
+            const savedNotes = localStorage.getItem('clinical_scratchpad_notes');
+            if (savedNotes) {
+                scratchpad.value = savedNotes;
+            }
+
+            // Bind Scratchpad Auto-Saving
+            scratchpad.addEventListener('input', handleNoteTyping);
+
+            // Initialize Shift Timer if already running
+            checkActiveShift();
+
+            // Setup Keyboard Input for Lock Screen
+            window.addEventListener('keydown', handleKeyboardPin);
+        });
+
+        // LOCK SCREEN CODE INPUT
+        function pressKey(num) {
+            if (enteredPin.length < 4) {
+                enteredPin.push(num);
+                updatePinDots();
+
+                if (enteredPin.length === 4) {
+                    setTimeout(validatePIN, 200);
+                }
+            }
+        }
+
+        function deleteLastDigit() {
+            if (enteredPin.length > 0) {
+                enteredPin.pop();
+                updatePinDots();
+            }
+        }
+
+        function clearPIN() {
+            enteredPin = [];
+            updatePinDots();
+        }
+
+        function updatePinDots() {
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.getElementById(`dot${i}`);
+                if (i <= enteredPin.length) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                    dot.classList.remove('error');
+                }
+            }
+        }
+
+        function validatePIN() {
+            const pinString = enteredPin.join('');
+            if (pinString === CORRECT_PIN) {
+                unlockPortal();
+            } else {
+                // Shake Lock Screen to show invalid PIN
+                lockCard.classList.add('shake');
+                for (let i = 1; i <= 4; i++) {
+                    document.getElementById(`dot${i}`).classList.add('error');
+                }
+
+                setTimeout(() => {
+                    lockCard.classList.remove('shake');
+                    clearPIN();
+                }, 500);
+            }
+        }
+
+        function handleKeyboardPin(e) {
+            // Only process key events if lock screen is active
+            if (lockScreen.classList.contains('unlocked')) return;
+
+            if (e.key >= '0' && e.key <= '9') {
+                pressKey(parseInt(e.key));
+            } else if (e.key === 'Backspace') {
+                deleteLastDigit();
+            } else if (e.key === 'Escape') {
+                clearPIN();
+            }
+        }
+
+        // PORTAL TRANSITIONS
+        function unlockPortal() {
+            sessionStorage.setItem('clinical_portal_unlocked', 'true');
+            lockScreen.classList.add('unlocked');
+            portalDashboard.classList.add('visible');
+            setTimeout(() => {
+                lockScreen.style.display = 'none';
+            }, 600);
+        }
+
+        function bypassLockScreen() {
+            lockScreen.style.display = 'none';
+            lockScreen.classList.add('unlocked');
+            portalDashboard.classList.add('visible');
+        }
+
+        function lockPortal() {
+            sessionStorage.removeItem('clinical_portal_unlocked');
+            lockScreen.style.display = 'flex';
+
+            // Allow animation frame
+            setTimeout(() => {
+                lockScreen.classList.remove('unlocked');
+                portalDashboard.classList.remove('visible');
+                clearPIN();
+            }, 10);
+        }
+
+        // LIVE SYSTEM CLOCK
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', dateOptions);
+            liveClock.innerHTML = `${timeString} <span style="font-size: 0.75rem; color: var(--clr-text-muted); font-weight: normal; margin-left: 5px;">| ${dateString}</span>`;
+        }
+
+        // SHIFT ACTIVE WORK TIMER
+        function toggleShift() {
+            const activeShift = localStorage.getItem('shift_start_time');
+            if (activeShift) {
+                // End shift
+                clearInterval(shiftInterval);
+                localStorage.removeItem('shift_start_time');
+                shiftDuration.innerText = '00h 00m 00s';
+                shiftBtn.innerText = 'Iniciar';
+                shiftBtn.classList.remove('active');
+            } else {
+                // Start shift
+                const startTime = Date.now();
+                localStorage.setItem('shift_start_time', startTime.toString());
+                shiftBtn.innerText = 'Terminar';
+                shiftBtn.classList.add('active');
+                startShiftTicker(startTime);
+            }
+        }
+
+        function checkActiveShift() {
+            const startTimeStr = localStorage.getItem('shift_start_time');
+            if (startTimeStr) {
+                const startTime = parseInt(startTimeStr);
+                shiftBtn.innerText = 'End Shift';
+                shiftBtn.classList.add('active');
+                startShiftTicker(startTime);
+            }
+        }
+
+        function startShiftTicker(startTime) {
+            if (shiftInterval) clearInterval(shiftInterval);
+
+            function tick() {
+                const elapsedMs = Date.now() - startTime;
+                const totalSec = Math.floor(elapsedMs / 1000);
+                const hrs = Math.floor(totalSec / 3600);
+                const mins = Math.floor((totalSec % 3600) / 60);
+                const secs = totalSec % 60;
+
+                shiftDuration.innerText =
+                    `${hrs.toString().padStart(2, '0')}h ` +
+                    `${mins.toString().padStart(2, '0')}m ` +
+                    `${secs.toString().padStart(2, '0')}s`;
+            }
+
+            tick();
+            shiftInterval = setInterval(tick, 1000);
+        }
+
+        // PERSISTENT SCRATCHPAD ACTIONS
+        function handleNoteTyping() {
+            notesStatus.classList.add('unsaved');
+            notesStatus.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Typing...';
+
+            if (saveTimeout) clearTimeout(saveTimeout);
+
+            saveTimeout = setTimeout(() => {
+                localStorage.setItem('clinical_scratchpad_notes', scratchpad.value);
+                notesStatus.classList.remove('unsaved');
+                notesStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Saved to Device';
+            }, 600); // Debounce typing for 600ms
+        }
+
+        // COPY TO CLIPBOARD HELPER
+        function copyCredentialsUrl() {
+            const secretUrl = "https://docs.google.com/spreadsheets/d/11ftEmmgF3V7DY1__miXtkAm2NFVVRsMwUQ4EovEMVHA/edit?gid=657770736#gid=657770736";
+            navigator.clipboard.writeText(secretUrl).then(() => {
+                const copyIcon = document.getElementById('copyIcon');
+                copyIcon.className = "fa-solid fa-check";
+                copyIcon.style.color = "var(--clr-accent)";
+
+                showToast("Credentials spreadsheet link copied! 📋");
+
+                setTimeout(() => {
+                    copyIcon.className = "fa-regular fa-copy";
+                    copyIcon.style.color = "";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // TOAST NOTIFICATIONS
+        function showToast(message) {
+            toastMsg.innerText = message;
+            toastMsg.classList.add('show');
+            setTimeout(() => {
+                toastMsg.classList.remove('show');
+            }, 3000);
+        }
+
+        // UNCONFIGURED SYSTEM HANDLER
+        function alertConfig(systemName) {
+            showToast(`${systemName} requires direct hospital VPN connection. 🌐`);
+        }
+    </script>
+</body>
+
+</html>
