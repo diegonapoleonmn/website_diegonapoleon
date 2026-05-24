@@ -201,3 +201,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+// COPY TEMPLATE HELPER
+function copyTemplate(templateId, btnElement) {
+    const textToCopy = document.getElementById(templateId).innerText;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        // Visual feedback on the button
+        const originalText = btnElement.innerHTML;
+        btnElement.innerHTML = '<i class="fa-solid fa-check"></i> Copiado';
+        btnElement.style.background = 'var(--clr-accent)';
+        btnElement.style.color = 'var(--clr-dark-bg)';
+
+        // Trigger existing toast message
+        showToast("Plantilla copiada al portapapeles! 📋");
+
+        // Reset button after 2 seconds
+        setTimeout(() => {
+            btnElement.innerHTML = originalText;
+            btnElement.style.background = '';
+            btnElement.style.color = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        showToast("Error al copiar ❌");
+    });
+}

@@ -5,13 +5,20 @@
 
 :root {
     /* Glowing Dark Tech Theme */
-    --clr-dark-bg: #070B19;       /* Deepest obsidian blue */
-    --clr-card-bg: rgba(20, 30, 55, 0.45); /* Highly transparent deep blue */
-    --clr-accent: #00F5D4;        /* Clinical Neon Teal */
-    --clr-blue: #00D2FF;          /* High-Tech Cyan */
-    --clr-danger: #FF5E7E;        /* Warning Neon Pink/Red */
-    --clr-text-main: #E2E8F0;     /* Soft Clinical White */
-    --clr-text-muted: #94A3B8;    /* Muted Slate Gray */
+    --clr-dark-bg: #070B19;
+    /* Deepest obsidian blue */
+    --clr-card-bg: rgba(20, 30, 55, 0.45);
+    /* Highly transparent deep blue */
+    --clr-accent: #00F5D4;
+    /* Clinical Neon Teal */
+    --clr-blue: #00D2FF;
+    /* High-Tech Cyan */
+    --clr-danger: #FF5E7E;
+    /* Warning Neon Pink/Red */
+    --clr-text-main: #E2E8F0;
+    /* Soft Clinical White */
+    --clr-text-muted: #94A3B8;
+    /* Muted Slate Gray */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
     --glass-border: 1px solid rgba(255, 255, 255, 0.08);
@@ -40,13 +47,16 @@ body {
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.02);
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 245, 212, 0.2);
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 245, 212, 0.5);
 }
@@ -188,9 +198,21 @@ body {
 
 /* Animations for Unlock Gate */
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-10px); }
-    40%, 80% { transform: translateX(10px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-10px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(10px);
+    }
 }
 
 .shake {
@@ -262,8 +284,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Clinical Status Widget & Time */
@@ -445,7 +474,8 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    z-index: 3; /* Clickable above card link */
+    z-index: 3;
+    /* Clickable above card link */
     transition: all 0.3s ease;
 }
 
@@ -652,23 +682,23 @@ body {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .header-widgets {
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .widget-glass {
         flex-grow: 1;
         align-items: flex-start;
     }
-    
+
     .lock-card {
         width: 100%;
         max-width: 360px;
         padding: 30px 20px;
     }
-    
+
     .key-btn {
         width: 60px;
         height: 60px;
@@ -680,15 +710,99 @@ body {
     .portal-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .portal-footer {
         flex-direction: column;
         gap: 20px;
         text-align: center;
     }
-    
+
     .back-btn {
         width: 100%;
         justify-content: center;
     }
+}
+
+/* ==========================================================================
+   Clinical Templates Section
+   ========================================================================== */
+.templates-container {
+    margin-bottom: 40px;
+}
+
+.templates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.template-details {
+    background: var(--clr-card-bg);
+    border: var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: var(--glass-blur);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.template-details summary {
+    padding: 18px 25px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--clr-text-main);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.template-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.template-details summary i {
+    color: var(--clr-accent);
+    transition: transform 0.3s ease;
+}
+
+.template-details[open] summary i {
+    transform: rotate(90deg);
+}
+
+.template-body {
+    padding: 0 25px 25px;
+    position: relative;
+}
+
+.template-body pre {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 8px;
+    color: var(--clr-text-muted);
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    border-left: 3px solid var(--clr-blue);
+    margin-top: 10px;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    background: rgba(0, 245, 212, 0.1);
+    border: 1px solid var(--clr-accent);
+    color: var(--clr-accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: var(--clr-accent);
+    color: var(--clr-dark-bg);
 }
