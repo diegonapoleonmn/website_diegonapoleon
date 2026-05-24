@@ -386,14 +386,14 @@
         // PERSISTENT SCRATCHPAD ACTIONS
         function handleNoteTyping() {
             notesStatus.classList.add('unsaved');
-            notesStatus.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Typing...';
+            notesStatus.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Escribiendo...';
 
             if (saveTimeout) clearTimeout(saveTimeout);
 
             saveTimeout = setTimeout(() => {
                 localStorage.setItem('clinical_scratchpad_notes', scratchpad.value);
                 notesStatus.classList.remove('unsaved');
-                notesStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Saved to Device';
+                notesStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Guardado en el Dispositivo';
             }, 600); // Debounce typing for 600ms
         }
 
