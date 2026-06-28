@@ -233,6 +233,23 @@ ul {
     padding: var(--section-padding);
 }
 
+/* Resume Grid */
+
+/* Personal Section Styling */
+#personal {
+    background: linear-gradient(135deg, var(--clr-light-surface) 0%, var(--clr-light-bg) 100%);
+    padding: var(--section-padding);
+}
+
+#personal .personal-list li {
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+#personal .personal-list li:hover {
+    transform: translateX(5px);
+    color: var(--clr-accent);
+}
+
 /* Resume Grid & Layout */
 .resume-layout {
     display: flex;
@@ -408,6 +425,82 @@ ul {
 .blog-content p {
     color: #666;
 }
+
+.personal-list {
+    margin-top: 20px;
+    margin-left: 20px;
+    line-height: 1.6;
+}
+
+/* Photo gallery styling */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.photo-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ================================
+   Personal Options Grid
+   ================================ */
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    margin-top: 40px;
+}
+.option-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.option-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 10px 30px rgba(0,245,212,0.4);
+}
+
+/* Personal page dark theme */
+#personal {
+    background: linear-gradient(135deg, var(--clr-dark-bg), var(--clr-dark-surface));
+    color: #fff;
+    padding: var(--section-padding);
+}
+/* Ensure headings inside personal are white */
+#personal h2, #personal h3 {
+    color: #fff;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.photo-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
 
 /* Links Section */
 .links-grid {
