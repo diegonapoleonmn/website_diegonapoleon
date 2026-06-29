@@ -105,6 +105,24 @@ ul {
     font-size: 1.1rem;
 }
 
+@media (max-width: 600px) {
+    .resume-layout {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .resume-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .resume-grid {
+        width: 100% !important;
+    }
+}
+
 /* ==========================================================================
    Header / Navigation
    ========================================================================== */
@@ -286,11 +304,11 @@ ul {
 }
 
 .resume-image {
-    flex: 0 0 300px;
+    flex: 0 0 400px;
     /* Fixed width for image container */
-    max-width: 300px;
-    min-width: 300px;
-    max-height: 400px;
+    max-width: 400px;
+    min-width: 400px;
+    max-height: 500px;
     /* Limit height to prevent oversized image */
     overflow: hidden;
 }
@@ -668,35 +686,45 @@ ul {
     color: #666;
 }
 
-/* ==========================================================================
-   Responsive Design
-   ========================================================================== */
+
 @media (max-width: 992px) {
-    .hero-section {
-        flex-direction: column-reverse;
-        justify-content: center;
-        text-align: center;
+
+    /* Ensure resume layout stacks vertically on narrower screens */
+    .resume-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
     }
 
-    .hero-image-container {
-        width: 80%;
-        height: 40vh;
-        margin-bottom: 40px;
-    }
-
-    .hero-content {
+    .resume-image {
         max-width: 100%;
+        width: 80%;
+        margin: 0 auto;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
-        /* Consistent smaller title */
-    }
-
-    .footer-layout {
-        grid-template-columns: 1fr;
+    .research-section .resume-layout {
+        flex-direction: column;
     }
 }
+
+@media (max-width: 768px) {
+    .resume-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .resume-image {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .research-grid {
+        width: 100%;
+    }
+}
+
+/* Removed stray broken CSS block that duplicated responsive rules */
 
 @media (max-width: 768px) {
     .main-header {
