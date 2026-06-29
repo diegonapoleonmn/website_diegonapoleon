@@ -7,19 +7,24 @@
     <title>Personal Interests</title>
     <meta name="description" content="Personal hobbies, photos.">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="personal.css">
 </head>
 
 <!-- Main Navigation (same as main site) -->
 <header class="main-header">
-    <div class="logo">Diego N. Medina</div>
+    <a href="index.html" class="logo">Diego N. Medina</a>
+    <div class="hamburger" aria-label="Menu" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <nav class="center-nav">
-        <a href="#current-projects">Projects</a>
-        <a href="#resume">Resume</a>
-        <a href="#research">Research</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html#current-projects">Projects</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#contact">Contact</a>
         <a href="personal.html">Personal</a>
-        <a href="portal.html" class="portal-nav-link">Portal</a>
     </nav>
     <div class="social-nav">
         <a href="https://orcid.org/0000-0002-3591-5951" aria-label="ORCID" title="ORCID"><i
@@ -30,40 +35,123 @@
                 class="fa-brands fa-instagram"></i></a>
         <a href="https://www.linkedin.com/in/diego-napoleon/" aria-label="LinkedIn" title="LinkedIn"><i
                 class="fa-brands fa-linkedin"></i></a>
-        <a href="https://github.com/diegonapoleonmn" aria-label="GitHub" title="GitHub"><i
+        <a href="https://github.com/diego-napoleonmn" aria-label="GitHub" title="GitHub"><i
                 class="fa-brands fa-github"></i></a>
     </div>
 </header>
 
 
-<!-- Personal Interests Section -->
+<!-- Personal Interests Section (Spanish) -->
 <section class="section-light" id="personal">
     <div class="container">
         <div class="section-header">
-            <h2>My Personal World</h2>
+            <h2>Mi Mundo Personal ( Aún en desarrollo :D )</h2>
         </div>
-
         <div class="option-grid">
-            <a href="#boardgames" class="option-card boardgames-card">
-                <h3>Boardgames</h3>
+            <a href="#pensamientos-bajo-agua" class="option-card swim-card">
+                <h3>Pensamientos bajo el agua</h3>
             </a>
-            <a href="#swim-stories" class="option-card swim-card">
-                <h3>Stories about Swimming</h3>
+            <a href="#actividad-fisica" class="option-card physical-card">
+                <h3>Actividad física</h3>
             </a>
-            <a href="#physical-activities" class="option-card physical-card">
-                <h3>Physical activities</h3>
+            <a href="#juegos-de-mesa" class="option-card boardgames-card">
+                <h3>Juegos de Mesa</h3>
             </a>
-            <a href="#travels" class="option-card travels-card">
-                <h3>Travels</h3>
+            <a href="#viajes" class="option-card travels-card">
+                <h3>Viajes</h3>
             </a>
         </div>
     </div>
 </section>
-<!-- Add <img src="path/to/photo.jpg" alt="Description"> tags here -->
-</div>
-</div>
+
+
+<!-- Pensamientos bajo el agua Section -->
+<section id="pensamientos-agua" class="section-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Pensamientos bajo el agua (Aún no hay nada)</h2>
+        </div>
+        <div class="links-grid">
+            <a href="pensamientos_agua/dejando_competencias.html" class="link-card">
+                <div class="card-image"><img src="images/last_swim_tournament.jpg"></div>
+                <h4>Por qué dejé la natación competitiva</h4>
+            </a>
+            <a href="pensamientos_agua/tristeza_al_regresar.html" class="link-card">
+                <div class="card-image"><img src="images/swim_sad.jpg"></div>
+                <h4>Tristeza al regresar</h4>
+            </a>
+            <a href="pensamientos_agua/reencontrandome.html" class="link-card">
+                <div class="card-image"><img src="images/reencontrandome.jpg"></div>
+                <h4>Reencontrandome conmigo y perdonando</h4>
+            </a>
+        </div>
+    </div>
 </section>
 
+<!-- Actividad física Section -->
+<section id="actividad-fisica" class="section-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Actividad física</h2>
+        </div>
+        <div class="links-grid">
+            <a href="actividad_fisica/######################" class="link-card">
+                <div class="card-image"><img src="images/bike.jpg"></div>
+                <h4>Bicicleta: Rutas favoritas</h4>
+            </a>
+            <a href="actividad_fisica/######################" class="link-card">
+                <div class="card-image"><img src="images/bike.jpg"></div>
+                <h4>Bicicleta: Rutas que me gustaría</h4>
+            </a>
+            <a href="actividad_fisica/######################" class="link-card">
+                <div class="card-image"><img src="images/run_random.jpg"></div>
+                <h4>Correr: Rutas que conozco</h4>
+            </a>
+            <a href="actividad_fisica/######################" class="link-card">
+                <div class="card-image"><img src="images/run_random.jpg"></div>
+                <h4>Correr: Rutas que me gustaría</h4>
+            </a>
+            <a href="actividad_fisica/######################" class="link-card">
+                <div class="card-image"><img src="images/sea.jpg"></div>
+                <h4>Lugares más bonitos que he nadado :D</h4>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Juegos de Mesa Section -->
+<section id="juegos-de-mesa" class="section-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Juegos de Mesa (Esto sí funciona)</h2>
+        </div>
+        <div class="links-grid">
+            <a href="juegos de mesa/top_10_boardgames.html" class="link-card">
+                <div class="card-image"><img src="images/boardgames_top10.jpg"></div>
+                <h4>Mis 10 juegos de mesa favoritos</h4>
+            </a>
+            <a href="juegos de mesa/want_to_play_boardgames.html" class="link-card">
+                <div class="card-image"><img src="images/boardgames_want.jpg"></div>
+                <h4>Los juegos de mesa que me encantaría probar</h4>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Viajes Section -->
+<section id="viajes" class="section-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Viajes</h2>
+        </div>
+        <div class="links-grid">
+            <a href="viajes_######################" class="link-card">
+                <div class="card-image"><img src="images/travels.jpg"></div>
+                <h4>En progreso</h4>
+            </a>
+        </div>
+    </div>
+</section>
 
 <script src="script.js"></script>
 </body>

@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. Sticky Header Effect ---
     const header = document.querySelector('.main-header');
+    const hamburger = document.querySelector('.hamburger');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            header.classList.toggle('nav-open');
+        });
+    }
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -73,34 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
-    // --- 4. Secret Clinical Portal Triggers ---
-
-    // Trigger A: Double click on the Header Logo
-    const logo = document.querySelector('.logo');
-    if (logo) {
-        logo.addEventListener('dblclick', () => {
-            window.location.href = 'portal.html';
-        });
-        logo.style.cursor = 'default';
-        logo.style.userSelect = 'none';
-    }
-
-    // Trigger B: Keyboard shortcut typing "doc" in sequence
-    let keysTyped = '';
-    window.addEventListener('keydown', (e) => {
-        // Ignore if user is currently typing in a form input or textarea
-        if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
-            return;
-        }
-        // Prevent buffer bloat, only capture alphanumeric keys
-        if (e.key.length === 1) {
-            keysTyped += e.key.toLowerCase();
-            keysTyped = keysTyped.slice(-3);
-            if (keysTyped === 'doc') {
-                window.location.href = 'portal.html';
-            }
-        }
-    });
 
     // --- 5. Masked Email Copy to Clipboard on Click ---
     const maskedEmail = document.querySelector('.masked-email');

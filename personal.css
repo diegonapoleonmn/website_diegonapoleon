@@ -1,27 +1,94 @@
 /* Personal page light theme overrides */
 /* Base body background */
 body {
-    background-color: #f9fafb; /* very light gray */
+    background-color: #f9fafb;
+    /* very light gray */
     color: #333333;
 }
 
 /* Section background – subtle gradient */
-.section-light {
-    background: linear-gradient(to bottom, #e8efff, #ffffff);
+.section-white {
+    background: #ffffff;
+    padding: var(--section-padding);
+}
+
+.section-gray {
+    background: #f2f2f2;
     padding: var(--section-padding);
 }
 
 /* Heading colors – no red */
 .section-header h2,
 .section-header h3,
-h2, h3 {
-    color: #2c3e50; /* dark slate blue */
+h2,
+h3 {
+    color: #2c3e50;
+    /* dark slate blue */
     margin: 0;
 }
 
 /* Option cards – ensure image covers and text is readable */
+.opt.link-card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.link-card:hover {
+    border-color: var(--clr-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 245, 212, 0.05);
+}
+
+/* Ensure images stay visible on hover */
+.link-card:hover .card-image img,
+.option-card:hover .card-image img {
+    opacity: 1;
+}
+
+/* Preserve background images on option cards */
+/* No hover effect needed – background handled in main CSS */
+
+.link-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--clr-dark-bg);
+}
+
+.link-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Card image sizing for link cards */
+
+/* Section image sizing */
+.section-light img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.link-card .card-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.link-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .option-card {
-    position: relative;
+    background: transparent;
     overflow: hidden;
     border-radius: 12px;
     height: 200px;
@@ -29,20 +96,33 @@ h2, h3 {
     align-items: flex-end;
     padding: 16px;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     background-size: cover;
     background-position: center;
     transition: transform .3s ease, box-shadow .3s ease;
 }
+
 .option-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    transform: none;
+    box-shadow: none;
 }
+
 /* Specific background images */
-.boardgames-card { background-image: url('images/boardgames.jpg'); }
-.swim-card { background-image: url('images/swim.jpg'); }
-.physical-card { background-image: url('images/physical_activities.jpg'); }
-.travels-card { background-image: url('images/travels.jpg'); }
+.boardgames-card {
+    background-image: url('images/boardgames.jpg');
+}
+
+.swim-card {
+    background-image: url('images/swim.jpg');
+}
+
+.physical-card {
+    background-image: url('images/physical_activities.jpg');
+}
+
+.travels-card {
+    background-image: url('images/travels.jpg');
+}
 
 /* Optional bottom area styling */
 .personal-bottom {

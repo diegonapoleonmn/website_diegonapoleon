@@ -6,32 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diego Napoleon Medina</title>
     <meta name="description" content="Portfolio and research archive of a Medical Intern and Clinical Researcher.">
-
-    <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
-
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-
     <!-- Main Navigation -->
     <header class="main-header">
-        <div class="logo">Diego N. Medina</div>
+        <a href="index.html" class="logo">Diego N. Medina</a>
+        <div class="hamburger" aria-label="Menu" role="button">
+            <span></span><span></span><span></span>
+        </div>
         <nav class="center-nav">
             <a href="#current-projects">Projects</a>
             <a href="#resume">Resume</a>
             <a href="#research">Research</a>
             <a href="#contact">Contact</a>
-            <a href="personal.html">Personal</a> <a href="portal.html" class="portal-nav-link">Portal</a>
-
+            <a href="personal.html">Personal</a>
         </nav>
         <div class="social-nav">
             <a href="https://orcid.org/0000-0002-3591-5951" aria-label="ORCID" title="ORCID"><i
@@ -42,267 +38,152 @@
                     class="fa-brands fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/diego-napoleon/" aria-label="LinkedIn" title="LinkedIn"><i
                     class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/diegonapoleonmn" aria-label="GitHub" title="GitHub"><i
+            <a href="https://github.com/diego-napoleonmn" aria-label="GitHub" title="GitHub"><i
                     class="fa-brands fa-github"></i></a>
         </div>
     </header>
-
-    <!-- Geometric Hero Section -->
+    <!-- Hero Section -->
     <section class="hero-section" id="home">
-        <!-- Hero Content -->
         <div class="hero-content">
-            <h1 class="hero-title">
-                <strong>DIEGO NAPOLEON MEDINA</strong>
-            </h1>
-            <h2 class="hero-subtitle">MEDICAL INTERN AND RESEARCHER</h2>
+            <h1 class="hero-title">DIEGO NAPOLEON MEDINA</h1>
+            <h2 class="hero-subtitle">MEDICAL INTERN & RESEARCHER</h2>
         </div>
-
-        <!-- Central Image Element -->
         <div class="hero-image-container">
             <img src="images/hero-headshot.jpg" alt="Dr. Diego" class="hero-main-img">
         </div>
     </section>
 
+
     <!-- Current Projects Section -->
-    <section class="section-light" id="current-projects"
-        style="background-color: var(--clr-light-bg); border-bottom: 1px solid #eaeaea;">
+    <section class="section-white" id="current-projects">
         <div class="container">
             <div class="section-header">
                 <h2>Ongoing Projects</h2>
             </div>
-
-            <div class="links-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
-                <!-- Project 0 -->
-                <div class="link-card"
-                    style="text-align: left; padding: 25px; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                    <div>
-                        <div
-                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                            <span
-                                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #009984; font-weight: 600; background: rgba(0, 245, 212, 0.08); padding: 4px 10px; border-radius: 20px;">
-                                Systematic Review</span>
-                            <i class="fa-solid fa-magnifying-glass-chart"
-                                style="color: var(--clr-dark-bg); opacity: 0.5;"></i>
-                        </div>
-                        <h4 style="font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4;">Subclinical Decline of
-                            Left Heart Mechanics in Early Chronic Kidney Disease: A Systematic Review and Meta-Analysis
-                        </h4>
-                    </div>
-                    <p
-                        style="font-size: 0.8rem; color: #888; font-style: italic; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                        Deterioro subclínico de la mecánica del corazón izquierdo en la enfermedad renal crónica
+            <div class="links-grid">
+                <div class="link-card">
+                    <h4>Subclinical Decline of Left Heart Mechanics in Early Chronic Kidney Disease: A Systematic Review
+                        and Meta-Analysis</h4>
+                    <p>Deterioro subclínico de la mecánica del corazón izquierdo en la enfermedad renal crónica
                         temprana: una revisión sistemática y metaanálisis</p>
                 </div>
-
-                <!-- Project 1 -->
-                <div class="link-card"
-                    style="text-align: left; padding: 25px; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                    <div>
-                        <div
-                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                            <span
-                                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #009984; font-weight: 600; background: rgba(0, 245, 212, 0.08); padding: 4px 10px; border-radius: 20px;">Case
-                                Report</span>
-                            <i class="fa-solid fa-file-medical" style="color: var(--clr-dark-bg); opacity: 0.5;"></i>
-                        </div>
-                        <h4 style="font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4;">Supraclavicular mass and
-                            constitutional symptoms as initial manifestation of ovarian carcinoma</h4>
-                    </div>
-                    <p
-                        style="font-size: 0.8rem; color: #888; font-style: italic; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                        Masa supraclavicular y síntomas constitucionales como manifestación inicial de carcinoma
-                        de ovario</p>
+                <div class="link-card">
+                    <h4>Supraclavicular mass and constitutional symptoms as initial manifestation of ovarian carcinoma
+                    </h4>
+                    <p>Masa supraclavicular y síntomas constitucionales como manifestación inicial de carcinoma de
+                        ovario</p>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="link-card"
-                    style="text-align: left; padding: 25px; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                    <div>
-                        <div
-                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                            <span
-                                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #009984; font-weight: 600; background: rgba(0, 245, 212, 0.08); padding: 4px 10px; border-radius: 20px;">Systematic
-                                Review</span>
-                            <i class="fa-solid fa-magnifying-glass-chart"
-                                style="color: var(--clr-dark-bg); opacity: 0.5;"></i>
-                        </div>
-                        <h4 style="font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4;">Anticoagulant Use In
-                            Patients With Atrial Fibrillation And Thrombocytopenia: A Systematic Review</h4>
-                    </div>
-                    <p
-                        style="font-size: 0.8rem; color: #888; font-style: italic; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                        Uso de anticoagulantes en pacientes con fibrilación auricular y trombocitopenia: una revisión
+                <div class="link-card">
+                    <h4>Anticoagulant Use In Patients With Atrial Fibrillation And Thrombocytopenia: A Systematic Review
+                    </h4>
+                    <p>Uso de anticoagulantes en pacientes con fibrilación auricular y trombocitopenia: una revisión
                         sistemática</p>
                 </div>
-
-                <!-- Project 3 -->
-                <div class="link-card"
-                    style="text-align: left; padding: 25px; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                    <div>
-                        <div
-                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                            <span
-                                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #009984; font-weight: 600; background: rgba(0, 245, 212, 0.08); padding: 4px 10px; border-radius: 20px;">Case
-                                Report</span>
-                            <i class="fa-solid fa-file-medical" style="color: var(--clr-dark-bg); opacity: 0.5;"></i>
-                        </div>
-                        <h4 style="font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4;">Triple Primary Malignant
-                            Neoplasia: Breast Carcinoma, Lung Adenocarcinoma and therapy associated-ALL</h4>
-                    </div>
-                    <p
-                        style="font-size: 0.8rem; color: #888; font-style: italic; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                        Triple Neoplasia Maligna Primaria: Carcinoma de Mama, Adenocarcinoma Pulmonar y LLA asociada a
-                        la terapia</p>
+                <div class="link-card">
+                    <h4>Triple Primary Malignant Neoplasia: Breast Carcinoma, Lung Adenocarcinoma and therapy
+                        associated-ALL</h4>
+                    <p>Triple Neoplasia Maligna Primaria: Carcinoma de Mama, Adenocarcinoma Pulmonar y LLA asociada a la
+                        terapia</p>
                 </div>
-
-                <!-- Project 4 -->
-                <div class="link-card"
-                    style="text-align: left; padding: 25px; display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                    <div>
-                        <div
-                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                            <span
-                                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #009984; font-weight: 600; background: rgba(0, 245, 212, 0.08); padding: 4px 10px; border-radius: 20px;">Case
-                                Report</span>
-                            <i class="fa-solid fa-file-medical" style="color: var(--clr-dark-bg); opacity: 0.5;"></i>
-                        </div>
-                        <h4 style="font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4;">KILT syndrome with
-                            hydronephrosis secondary to compression by venous collateral circulation</h4>
-                    </div>
-                    <p
-                        style="font-size: 0.8rem; color: #888; font-style: italic; margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
-                        Síndrome KILT con hidronefrosis secundaria a compresión por circulación colateral venosa</p>
+                <div class="link-card">
+                    <h4>KILT syndrome with hydronephrosis secondary to compression by venous collateral circulation</h4>
+                    <p>Síndrome KILT con hidronefrosis secundaria a compresión por circulación colateral venosa</p>
                 </div>
             </div>
-
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#contact" class="btn-primary"
-                    style="padding: 12px 30px; font-size: 0.9rem; font-weight: 600; border-radius: 50px;">
-                    <i class="fa-regular fa-envelope" style="margin-right: 8px;"></i> Discuss Collaboration
-                </a>
+            <div style="text-align:center;margin-top:40px;">
+                <a href="#contact" class="btn-primary">Discuss Collaboration</a>
             </div>
         </div>
     </section>
-
     <!-- Clinical Experience & Education -->
-    <section class="section-light" id="resume">
+    <section class="section-gray" id="resume">
         <div class="container">
             <div class="section-header">
                 <h2>Clinical Experience & Education</h2>
             </div>
             <div class="resume-layout">
-                <div class="resume-image">
-                    <img src="images/hospital.jpg" alt="Hospital Nacional Edgardo Rebagliati Martins">
-                </div>
+                <div class="resume-image"><img src="images/hospital.jpg"
+                        alt="Hospital Nacional Edgardo Rebagliati Martins"></div>
                 <div class="resume-grid">
-                    <!-- Timeline Item 1 -->
                     <div class="resume-item">
                         <span class="date">January 2026 - Present</span>
                         <h3>Medical Intern</h3>
-                        <h4>Hospital Nacional Edgardo Rebagliati Martins &middot; Lima, Peru</h4>
+                        <h4>Hospital Nacional Edgardo Rebagliati Martins · Lima, Peru</h4>
                         <p>The largest hospital of the country. Internship rotations in Internal Medicine, Emergency
-                            Care, General Surgery, Pediatrics, and OBGYN.
-                        </p>
+                            Care, General Surgery, Pediatrics, and OBGYN.</p>
                     </div>
-                    <!-- Timeline Item 2 -->
                     <div class="resume-item">
                         <span class="date">2020 - Present</span>
                         <h3>Medical Student</h3>
-                        <h4>Universidad Católica de Santa María (UCSM) &middot; Arequipa, Peru</h4>
-                        <p>Top-ranked medical student, with a strong foundation in medical research.
-                        </p>
+                        <h4>Universidad Católica de Santa María (UCSM) · Arequipa, Peru</h4>
+                        <p>Top-ranked medical student, with a strong foundation in medical research.</p>
                     </div>
-                    <!-- Timeline Item 3 -->
                     <div class="resume-item">
                         <span class="date">January 2025</span>
                         <h3>Clinical Cardiology (EP) Rotation</h3>
-                        <h4>UI Health &middot; University of Illinois Chicago &middot; Chicago, US</h4>
-                        <p>Participated as a medical student in clinical EP consult note drafting,
-                            while helping as a Spanish-English medical interpreter.</p>
+                        <h4>UI Health · University of Illinois Chicago · Chicago, US</h4>
+                        <p>Participated as a medical student in clinical EP consult note drafting, while helping as a
+                            Spanish-English medical interpreter.</p>
                     </div>
-                    <!-- Timeline Item 4 -->
                     <div class="resume-item">
                         <span class="date">2023 - 2025</span>
                         <h3>Local Clinical Rotations</h3>
                         <h4>Top Southern Peru Hospitals</h4>
-                        <p>Hospital Carlos Alberto Seguin Escobedo, Hospital
-                            Goyeneche, Hospital Regional Honorio Delgado, Regional Institute of Neoplastic
-                            Diseases (IREN Sur).</p>
+                        <p>Hospital Carlos Alberto Seguin Escobedo, Hospital Goyeneche, Hospital Regional Honorio
+                            Delgado, Regional Institute of Neoplastic Diseases (IREN Sur).</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Latest Research -->
-    <section class="section-light research-section" id="research">
+    <section class="section-white research-section" id="research">
         <div class="container">
             <div class="section-header">
                 <h2>Latest Research</h2>
             </div>
-
             <div class="resume-layout">
-                <div class="resume-image">
-                    <img src="images/presentation.jpg" alt="Research Presentation">
-                </div>
-                <div class="research-grid" style="flex: 2;">
-
-                    <!-- Anticoagulation AF & TP -->
+                <div class="resume-image"><img src="images/presentation.jpg" alt="Research Presentation"></div>
+                <div class="research-grid">
                     <article class="research-card">
-                        <div class="card-meta"> Abstract &middot; 2026 &middot; ACP Abstract Competition</div>
+                        <div class="card-meta">Abstract · 2026 · ACP Abstract Competition</div>
                         <h3>Anticoagulant Use In Patients With Atrial Fibrillation And Thrombocytopenia: A Systematic
-                            Review
-                        </h3>
+                            Review</h3>
                         <p>Lead Author</p>
                         <a href="https://abstracts.acponline.org/Abstract?id=146566" target="_blank"
-                            class="read-more">View
-                            Abstract &rarr;</a>
+                            class="read-more">View Abstract →</a>
                     </article>
-
-                    <!-- Indocyanine green -->
                     <article class="research-card">
-                        <div class="card-meta"> Published Article &middot; 2026 &middot; Acta Neurochirurgica</div>
+                        <div class="card-meta">Published Article · 2026 · Acta Neurochirurgica</div>
                         <h3>Efficacy of intraoperative indocyanine green videoangiography (ICG-VA) and FLOW 800 in the
-                            surgical management of intracranial aneurysms: a systematic review and meta-analysis
-                        </h3>
+                            surgical management of intracranial aneurysms: a systematic review and meta-analysis</h3>
                         <p>Co-author</p>
                         <a href="https://doi.org/10.1007/s00701-026-06779-6" target="_blank" class="read-more">View
-                            Article &rarr;</a>
+                            Article →</a>
                     </article>
-
-                    <!-- Hypofractionated Radiotherapy -->
                     <article class="research-card">
-                        <div class="card-meta"> Published Article &middot; 2025 &middot; ONKORESEARCH</div>
+                        <div class="card-meta">Published Article · 2025 · ONKORESEARCH</div>
                         <h3>Hypofractionated Radiotherapy Plus Temozolomide in Elderly Glioblastoma: A Systematic Review
                             and Meta-analysis</h3>
                         <p>Co-author</p>
                         <a href="https://doi.org/10.69482/onkoresearch.v3i3.86" target="_blank" class="read-more">View
-                            Article &rarr;</a>
+                            Article →</a>
                     </article>
-
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
-    <!-- Footer & Contact Terminal -->
+    <!-- Footer & Contact -->
     <footer class="main-footer" id="contact">
         <div class="container footer-layout">
             <div class="footer-info">
                 <h2>Get in touch</h2>
                 <p>Available for clinical research collaborations, academic discussions, or inquiries.</p>
-
                 <div class="contact-details">
                     <a href="#" class="masked-email" data-secure="ZGllZ29uYXBvbGVvbi5kbUBnbWFpbC5jb20="
-                        title="Click to copy email">
-                        diegonapoleon.dm [at] gmail.com
-                    </a>
+                        title="Click to copy email">diegonapoleon.dm [at] gmail.com</a>
                     <p>Lima, Peru</p>
                 </div>
-
                 <div class="footer-socials">
                     <a href="https://github.com/diegonapoleonmn" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/diego-napoleon/" target="_blank">LinkedIn</a>
@@ -311,25 +192,15 @@
                     <a href="https://www.youtube.com/@diegonapoleonmn" target="_blank">YouTube</a>
                 </div>
             </div>
-
             <div class="footer-form">
                 <form action="https://formspree.io/f/xvzyqlnv" method="POST">
-                    <!-- Honeypot anti-spam field (hidden from humans) -->
                     <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Dr. John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" required
-                            placeholder="How can I help you?"></textarea>
-                    </div>
+                    <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name"
+                            required placeholder="Dr. John Doe"></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email"
+                            required placeholder="john@example.com"></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message"
+                            rows="4" required placeholder="How can I help you?"></textarea></div>
                     <button type="submit" class="btn-primary">SEND MESSAGE</button>
                 </form>
             </div>
@@ -338,7 +209,6 @@
             <p>&copy; 2026 Diego Napoleon Medina. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 
