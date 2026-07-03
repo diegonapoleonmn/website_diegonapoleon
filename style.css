@@ -105,24 +105,6 @@ ul {
     font-size: 1.1rem;
 }
 
-@media (max-width: 600px) {
-    .resume-layout {
-        flex-direction: column !important;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .resume-image {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-    }
-
-    .resume-grid {
-        width: 100% !important;
-    }
-}
-
 /* ==========================================================================
    Header / Navigation
    ========================================================================== */
@@ -192,26 +174,21 @@ ul {
    ========================================================================== */
 .hero-section {
     position: relative;
-    /* Using min-height so it doesn't clip on small vertical screens */
     min-height: 100vh;
     background-color: var(--clr-dark-bg);
     color: #fff;
     display: flex;
-    /* Stacks elements vertically and puts the image container on top */
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     padding: 40px 10%;
     overflow: hidden;
     gap: 30px;
-    /* Adds space between text and image on mobile */
 }
 
-/* 1. Mobile First Typography (Centered and slightly smaller) */
 .hero-title {
     font-family: var(--font-heading);
     font-size: 2.2rem;
-    /* Smaller on mobile (was 3rem) */
     letter-spacing: 3px;
     color: #fff;
     margin-bottom: 20px;
@@ -220,23 +197,18 @@ ul {
 .hero-subtitle {
     font-family: var(--font-heading);
     font-size: 1.4rem;
-    /* Smaller on mobile (was 2rem) */
     letter-spacing: 3px;
     color: #00aeef;
-    /* Your vibrant sky blue */
     margin-bottom: 40px;
 }
 
-/* Hero Content & Image */
 .hero-content {
     position: relative;
     z-index: 5;
     max-width: 400px;
     text-align: center;
-    /* Centers the text block on mobile */
 }
 
-/* Your original image container size preserved */
 .hero-image-container {
     position: relative;
     z-index: 2;
@@ -247,7 +219,6 @@ ul {
     align-items: center;
 }
 
-/* Your original image scaling preserved */
 .hero-main-img {
     max-width: 100%;
     max-height: 100%;
@@ -256,32 +227,24 @@ ul {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* ==========================================================================
-   Desktop Styles: Activates only when screen is wide (768px and up)
-   ========================================================================== */
 @media (min-width: 768px) {
     .hero-section {
         flex-direction: row;
-        /* Puts image back to the right */
         justify-content: space-between;
         height: 100vh;
         padding: 0 10%;
     }
 
-    /* 2. Desktop Restoration (Left-aligned and original sizes) */
     .hero-content {
         text-align: left;
-        /* Aligns text back to the left on desktop */
     }
 
     .hero-title {
         font-size: 3rem;
-        /* Restored original desktop size */
     }
 
     .hero-subtitle {
         font-size: 2rem;
-        /* Restored original desktop size */
     }
 }
 
@@ -302,12 +265,16 @@ ul {
     padding: var(--section-padding);
 }
 
-/* Resume Grid */
-
 /* Personal Section Styling */
 #personal {
-    background: linear-gradient(135deg, var(--clr-light-surface) 0%, var(--clr-light-bg) 100%);
+    background: linear-gradient(135deg, var(--clr-dark-bg), var(--clr-dark-surface));
+    color: #fff;
     padding: var(--section-padding);
+}
+
+#personal h2,
+#personal h3 {
+    color: #fff;
 }
 
 #personal .personal-list li {
@@ -331,11 +298,8 @@ ul {
 
 .resume-image {
     flex: 0 0 400px;
-    /* Fixed width for image container */
     max-width: 400px;
-    min-width: 400px;
     max-height: 500px;
-    /* Limit height to prevent oversized image */
     overflow: hidden;
 }
 
@@ -389,11 +353,9 @@ ul {
     font-size: 0.95rem;
 }
 
-
 /* Research (PRISMA style) */
 .research-section {
     background-color: #fff;
-    /* Slight contrast from other light sections */
 }
 
 .research-grid {
@@ -528,9 +490,7 @@ ul {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* ================================
-   Personal Options Grid
-   ================================ */
+/* Personal Options Grid */
 .option-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -546,7 +506,6 @@ ul {
     width: 100%;
     height: 200px;
     background: transparent;
-    /* removed subtle overlay */
     backdrop-filter: blur(10px);
     border-radius: 16px;
     color: #fff;
@@ -557,38 +516,9 @@ ul {
 }
 
 .option-card:hover {
-    /* Preserve static appearance */
     transform: none !important;
     box-shadow: none !important;
 }
-
-/* Personal page dark theme */
-#personal {
-    background: linear-gradient(135deg, var(--clr-dark-bg), var(--clr-dark-surface));
-    color: #fff;
-    padding: var(--section-padding);
-}
-
-/* Ensure headings inside personal are white */
-#personal h2,
-#personal h3 {
-    color: #fff;
-}
-
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.photo-gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 
 /* Links Section */
 .links-grid {
@@ -712,45 +642,42 @@ ul {
     color: #666;
 }
 
-
+/* ==========================================================================
+   Responsive Layout & Media Queries
+   ========================================================================== */
 @media (max-width: 992px) {
 
-    /* Ensure resume layout stacks vertically on narrower screens */
+    /* Stacks elements vertically for both resume and research layouts */
     .resume-layout {
         flex-direction: column;
         align-items: center;
         gap: 30px;
     }
 
+    /* Controls container so it respects original size and centers cleanly */
     .resume-image {
-        max-width: 100%;
-        width: 80%;
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+        /* Locks it at original size max */
+        min-width: 0;
+        /* Allows container to scale down safely later */
+        max-height: 500px;
         margin: 0 auto;
     }
 
-    .research-section .resume-layout {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 768px) {
-    .resume-layout {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+    .resume-image img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-fit: cover;
     }
 
-    .resume-image {
-        width: 90%;
-        max-width: 300px;
-    }
-
-    .research-grid {
+    .research-grid,
+    .resume-grid {
         width: 100%;
     }
 }
-
-/* Removed stray broken CSS block that duplicated responsive rules */
 
 @media (max-width: 768px) {
     .main-header {
@@ -776,7 +703,7 @@ ul {
         border-radius: 2px;
     }
 
-    /* Hide navigation by default, show when header has .nav-open */
+    /* Mobile Nav dropdown adjustments */
     .center-nav {
         display: none;
         flex-direction: column;
@@ -802,11 +729,8 @@ ul {
         text-align: right;
     }
 
-
-
     .floating-nav {
         display: none;
-        /* Hide complex geometric nav on very small screens */
     }
 
     .section-padding {
@@ -815,5 +739,14 @@ ul {
 
     .blog-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Allows images to gracefully scale down dynamically only below 400px wide screens */
+    .resume-image {
+        max-width: 100%;
+        padding: 0 10px;
     }
 }
