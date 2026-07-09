@@ -1,12 +1,74 @@
-/* Personal page light theme overrides */
-/* Base body background */
-body {
-    background-color: #f9fafb;
-    /* very light gray */
-    color: #333333;
+/* ==========================================================================
+   THE BULLETPROOF HORIZONTAL FIX
+   ========================================================================== */
+
+/* 1. Target the wrapper container */
+.card-row-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    grid-auto-flow: column !important;
+    /* FORCES elements to align left-to-right */
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 20px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 }
 
-/* Section background – subtle gradient */
+/* 2. Strip any weird block overrides from the cards inside this specific row */
+.card-row-grid .option-card {
+    display: flex !important;
+    align-items: flex-end !important;
+    width: auto !important;
+    /* Prevents card from demanding 100% width */
+    height: 200px !important;
+}
+
+/* ==========================================================================
+   Base Layout & Grid Configuration (Forces cards left-to-right)
+   ========================================================================== */
+body {
+    background-color: #f9fafb;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+/* This targets the container and forces cards to align side-by-side */
+.simple-page {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+    grid-auto-flow: row !important;
+    /* Explicitly forces cards left-to-right first */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure child elements behave correctly inside the grid row */
+.simple-page>div,
+.simple-page>a {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Add spacing between text elements if any exist */
+.simple-page h1,
+.simple-page h2,
+.simple-page h3,
+.simple-page p,
+.simple-page ul,
+.simple-page ol {
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Section backgrounds & Headings
+   ========================================================================== */
 .section-white {
     background: #ffffff;
     padding: var(--section-padding);
@@ -17,17 +79,104 @@ body {
     padding: var(--section-padding);
 }
 
-/* Heading colors – no red */
 .section-header h2,
 .section-header h3,
 h2,
 h3 {
     color: #2c3e50;
-    /* dark slate blue */
     margin: 0;
 }
 
-/* Option cards – ensure image covers and text is readable */
+/* ==========================================================================
+   Option Cards Base Styles
+   ========================================================================== */
+.option-card {
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    border-radius: 12px;
+    border: none;
+    height: 200px;
+    /* original button height */
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    transition: transform .3s ease, background-size .3s ease, box-shadow .3s ease;
+    text-decoration: none;
+    /* Removes link underline */
+    box-sizing: border-box;
+}
+
+/* Dark overlay for better text contrast */
+.option-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    z-index: 0;
+}
+
+/* Ensure card content appears above overlay */
+.option-card .card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+}
+
+/* Hover animation – subtle lift and scale */
+.option-card:hover {
+    background-size: 115%;
+    /* subtle zoom of background image */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   Card Image Exception (Built-in Gradients)
+   ========================================================================== */
+.swim-card {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/swim.jpg') !important;
+}
+
+.physical-card {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/physical_activities.jpg') !important;
+}
+
+.travels-card {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/travels.jpg') !important;
+}
+
+.boardgames-card {
+    background-image: url('images/boardgames.jpg') !important;
+}
+
+/* Text styles inside the option cards */
+.option-card h3 {
+    color: #ffffff !important;
+    font-size: 1.3rem;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.option-card p {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   Link Cards & Image styles
+   ========================================================================== */
 .opt.link-card {
     background: #fff;
     border: 1px solid #eaeaea;
@@ -42,14 +191,9 @@ h3 {
     box-shadow: 0 10px 20px rgba(0, 245, 212, 0.05);
 }
 
-/* Ensure images stay visible on hover */
-.link-card:hover .card-image img,
-.option-card:hover .card-image img {
+.link-card:hover .card-image img {
     opacity: 1;
 }
-
-/* Preserve background images on option cards */
-/* No hover effect needed – background handled in main CSS */
 
 .link-card h4 {
     font-size: 1.1rem;
@@ -62,9 +206,6 @@ h3 {
     color: #666;
 }
 
-/* Card image sizing for link cards */
-
-/* Section image sizing */
 .section-light img {
     max-width: 100%;
     height: auto;
@@ -87,115 +228,26 @@ h3 {
     display: block;
 }
 
-.option-card {
-    position: relative; /* overlay positioning */
-    background: transparent;
-    overflow: hidden;
-    border-radius: 12px;
-    border: none; /* remove border */
-    height: 200px; /* original button height */
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
+.back-btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--clr-accent);
     color: #fff;
-    background-size: cover;
-    background-position: center;
-    transition: transform .3s ease, background-size .3s ease; /* animate image scaling */
+    border-radius: 4px;
     text-decoration: none;
-    /* Quita el subrayado de los links */
 }
 
-/* Dark overlay for better text contrast */
-.option-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 12px;
-    z-index: 0;
+.simple-page ul {
+    list-style-type: disc;
+    padding-left: 25px;
 }
 
-/* Ensure card content appears above overlay */
-.option-card .card-content {
-    position: relative;
-    z-index: 1;
+.simple-page li {
+    display: list-item;
+    margin-bottom: 0.35rem;
 }
 
-/* Hover animation – subtle lift and scale */
-/* Hover animation – subtle lift, scale and pulse */
-.option-card:hover {
-    background-size: 115%;
-    /* subtle zoom of background image */
-}
-
-
-
-
-/* Agrega un degradado oscuro abajo para que el texto blanco siempre sea legible */
-.swim-card {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/swim.jpg');
-}
-
-.physical-card {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/physical_activities.jpg');
-}
-
-.travels-card {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/travels.jpg');
-}
-
-/* Contenedor del texto para obligar el salto de línea vertical */
-.option-card .card-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    text-align: left;
-    /* Alinea el texto a la izquierda */
-}
-
-/* Estilos específicos para los textos dentro de la tarjeta */
-.option-card h3 {
-    color: #ffffff !important;
-    font-size: 1.3rem;
-    margin: 0 0 4px 0;
-    font-weight: 600;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
-    /* Stronger shadow for readability */
-}
-
-.option-card p {
-    color: #e0e0e0;
-    font-size: 0.9rem;
-    margin: 0;
-    font-weight: 400;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    /* Stronger shadow */
-}
-
-.option-card:hover {
-    transform: translateY(-5px);
-    /* Un pequeño efecto de elevación al pasar el mouse */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Specific background images */
-.boardgames-card {
-    background-image: url('images/boardgames.jpg');
-}
-
-.swim-card {
-    background-image: url('images/swim.jpg');
-}
-
-.physical-card {
-    background-image: url('images/physical_activities.jpg');
-}
-
-.travels-card {
-    background-image: url('images/travels.jpg');
-}
-
-/* Optional bottom area styling */
 .personal-bottom {
     background-color: #f0f2f5;
     padding: 40px 5%;

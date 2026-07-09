@@ -1,22 +1,43 @@
 .simple-page {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    /* Coloca el contenido en vertical, dejando la imagen al final */
+    align-items: center;
+    /* Centra los elementos */
     gap: 20px;
     max-width: 800px;
     margin: auto;
 }
 
 .simple-page>div {
-    flex: 1;
+    width: 100%;
+    /* Asegura que el contenedor ocupe todo el ancho disponible */
 }
 
-/* Add spacing between text elements */
-.simple-page h1,
-.simple-page h2,
-.simple-page h3,
+/* Reducción del tamaño del texto para que sea un poco más pequeño */
 .simple-page p,
 .simple-page ul,
 .simple-page ol {
+    font-size: 0.95rem;
+    /* Texto un poquito más pequeño y estético */
+    line-height: 1.6;
+    /* Buen espaciado entre líneas para lectura fluida */
+    margin-bottom: 1rem;
+}
+
+/* Ajuste proporcional para los títulos */
+.simple-page h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.simple-page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.simple-page h3 {
+    font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
@@ -25,7 +46,8 @@
     height: 300px;
     object-fit: cover;
     border-radius: 8px;
-    margin-top: 90px;
+    margin-top: 20px;
+    /* Reducido de 90px a 20px para que encaje bien al final del texto */
 }
 
 .back-btn {
@@ -36,6 +58,7 @@
     color: #fff;
     border-radius: 4px;
     text-decoration: none;
+    font-size: 0.9rem;
 }
 
 .simple-page ul {
@@ -46,5 +69,5 @@
 .simple-page li {
     display: list-item;
     margin-bottom: 0.35rem;
-    /* Small space between list items */
+    /* Pequeño espacio entre ítems de lista */
 }
