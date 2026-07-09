@@ -8,7 +8,16 @@
 
 .simple-page>div {
     flex: 1;
-    /* text expands, image fixed */
+}
+
+/* Add spacing between text elements */
+.simple-page h1,
+.simple-page h2,
+.simple-page h3,
+.simple-page p,
+.simple-page ul,
+.simple-page ol {
+    margin-bottom: 1rem;
 }
 
 .simple-page img {
@@ -17,7 +26,6 @@
     object-fit: cover;
     border-radius: 8px;
     margin-top: 90px;
-    /* shift image down */
 }
 
 .back-btn {
@@ -28,4 +36,15 @@
     color: #fff;
     border-radius: 4px;
     text-decoration: none;
+}
+
+.simple-page ul {
+    list-style-type: disc;
+    padding-left: 25px;
+}
+
+.simple-page li {
+    display: list-item;
+    margin-bottom: 0.35rem;
+    /* Small space between list items */
 }

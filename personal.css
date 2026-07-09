@@ -88,23 +88,94 @@ h3 {
 }
 
 .option-card {
+    position: relative; /* overlay positioning */
     background: transparent;
     overflow: hidden;
     border-radius: 12px;
-    height: 200px;
+    border: none; /* remove border */
+    height: 200px; /* original button height */
     display: flex;
     align-items: flex-end;
-    padding: 16px;
+    padding: 20px;
     color: #fff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     background-size: cover;
     background-position: center;
-    transition: transform .3s ease, box-shadow .3s ease;
+    transition: transform .3s ease, background-size .3s ease; /* animate image scaling */
+    text-decoration: none;
+    /* Quita el subrayado de los links */
+}
+
+/* Dark overlay for better text contrast */
+.option-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    z-index: 0;
+}
+
+/* Ensure card content appears above overlay */
+.option-card .card-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover animation – subtle lift and scale */
+/* Hover animation – subtle lift, scale and pulse */
+.option-card:hover {
+    background-size: 115%;
+    /* subtle zoom of background image */
+}
+
+
+
+
+/* Agrega un degradado oscuro abajo para que el texto blanco siempre sea legible */
+.swim-card {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/swim.jpg');
+}
+
+.physical-card {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/physical_activities.jpg');
+}
+
+.travels-card {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/travels.jpg');
+}
+
+/* Contenedor del texto para obligar el salto de línea vertical */
+.option-card .card-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+}
+
+/* Estilos específicos para los textos dentro de la tarjeta */
+.option-card h3 {
+    color: #ffffff !important;
+    font-size: 1.3rem;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+    /* Stronger shadow for readability */
+}
+
+.option-card p {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    /* Stronger shadow */
 }
 
 .option-card:hover {
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-5px);
+    /* Un pequeño efecto de elevación al pasar el mouse */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Specific background images */

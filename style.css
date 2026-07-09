@@ -106,6 +106,73 @@ ul {
 }
 
 /* ==========================================================================
+   Donation Section (Pinkish-red theme global definitions)
+   ========================================================================== */
+.donation-section {
+    border: 3px solid #FF6F91;
+    padding: 60px 20px;
+    background: rgba(255, 111, 145, 0.05);
+    position: relative;
+    text-align: center;
+}
+
+.donation-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donation-text {
+    margin-bottom: 35px !important;
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+.donation-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 25px !important;
+    width: 100%;
+}
+
+.donation-btn {
+    display: inline-block !important;
+    background: #FF6F91;
+    color: #fff !important;
+    border: 2px solid #FF6F91;
+    padding: 12px 32px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 111, 145, 0.2);
+}
+
+.donation-btn:hover {
+    background: #e05a7d !important;
+    border-color: #e05a7d !important;
+}
+
+.donation-logos {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-top: 5px !important;
+}
+
+.donation-logo {
+    height: 100px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* ==========================================================================
    Header / Navigation
    ========================================================================== */
 .main-header {
@@ -225,6 +292,10 @@ ul {
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.hero-donate-btn {
+    margin-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -407,119 +478,6 @@ ul {
     color: var(--clr-accent);
 }
 
-/* Blog Grid */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 40px;
-}
-
-.blog-post {
-    background: var(--clr-light-surface);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    display: block;
-}
-
-.blog-post:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-}
-
-.blog-post:hover .blog-image img {
-    transform: scale(1.05);
-}
-
-.blog-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-}
-
-.blog-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.blog-content {
-    padding: 30px;
-}
-
-.blog-content .tag {
-    font-size: 0.75rem;
-    background: rgba(0, 245, 212, 0.1);
-    color: #009984;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.blog-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: var(--clr-dark-bg);
-}
-
-.blog-content p {
-    color: #666;
-}
-
-.personal-list {
-    margin-top: 20px;
-    margin-left: 20px;
-    line-height: 1.6;
-}
-
-/* Photo gallery styling */
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.photo-gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Personal Options Grid */
-.option-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    justify-items: center;
-    margin-top: 40px;
-}
-
-.option-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    background: transparent;
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    color: #fff;
-    font-size: 1.5rem;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-}
-
-.option-card:hover {
-    transform: none !important;
-    box-shadow: none !important;
-}
-
 /* Links Section */
 .links-grid {
     display: grid;
@@ -646,22 +604,16 @@ ul {
    Responsive Layout & Media Queries
    ========================================================================== */
 @media (max-width: 992px) {
-
-    /* Stacks elements vertically for both resume and research layouts */
     .resume-layout {
         flex-direction: column;
         align-items: center;
         gap: 30px;
     }
 
-    /* Controls container so it respects original size and centers cleanly */
     .resume-image {
         flex: none;
         width: 100%;
         max-width: 400px;
-        /* Locks it at original size max */
-        min-width: 0;
-        /* Allows container to scale down safely later */
         max-height: 500px;
         margin: 0 auto;
     }
@@ -684,7 +636,6 @@ ul {
         flex-wrap: wrap;
     }
 
-    /* Hamburger icon */
     .hamburger {
         display: flex;
         flex-direction: column;
@@ -703,7 +654,6 @@ ul {
         border-radius: 2px;
     }
 
-    /* Mobile Nav dropdown adjustments */
     .center-nav {
         display: none;
         flex-direction: column;
@@ -728,23 +678,9 @@ ul {
         width: 100%;
         text-align: right;
     }
-
-    .floating-nav {
-        display: none;
-    }
-
-    .section-padding {
-        padding: 60px 5%;
-    }
-
-    .blog-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 480px) {
-
-    /* Allows images to gracefully scale down dynamically only below 400px wide screens */
     .resume-image {
         max-width: 100%;
         padding: 0 10px;
