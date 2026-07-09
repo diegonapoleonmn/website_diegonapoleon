@@ -1,28 +1,47 @@
 /* ==========================================================================
-   THE BULLETPROOF HORIZONTAL FIX
+   Master Option Grid Layout (Horizontal on PC, Squares on Mobile)
    ========================================================================== */
 
-/* 1. Target the wrapper container */
-.card-row-grid {
+/* 1. Desktop Mode: Forces cards left-to-right */
+.option-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-    grid-auto-flow: column !important;
-    /* FORCES elements to align left-to-right */
+    grid-template-columns: repeat(4, 1fr) !important;
+    /* Forces exactly 4 columns side-by-side */
     gap: 20px !important;
     width: 100% !important;
     max-width: 1200px !important;
     margin: 20px auto !important;
-    padding: 0 !important;
     box-sizing: border-box !important;
 }
 
-/* 2. Strip any weird block overrides from the cards inside this specific row */
-.card-row-grid .option-card {
-    display: flex !important;
-    align-items: flex-end !important;
-    width: auto !important;
-    /* Prevents card from demanding 100% width */
-    height: 200px !important;
+/* Ensure cards don't have broken heights on PC */
+.option-grid .option-card {
+    height: 220px !important;
+    /* Clean height for desktop view */
+    width: 100% !important;
+}
+
+/* 2. Mobile Mode: Switches to vertical stack with perfect squares */
+@media (max-width: 768px) {
+    .option-grid {
+        grid-template-columns: 1fr !important;
+        /* Switches layout to 1 single column */
+        gap: 15px !important;
+        padding: 0 10px !important;
+    }
+
+    .option-grid .option-card {
+        width: 100% !important;
+        max-width: 340px !important;
+        /* Keeps squares from getting too huge on big phones */
+        margin: 0 auto !important;
+        /* Centers the squares on the screen */
+
+        /* THE MAGIC SQUARE LINES */
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        /* Overrides the PC desktop height */
+    }
 }
 
 /* ==========================================================================
