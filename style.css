@@ -323,11 +323,16 @@ ul {
    Sections (Light Background)
    ========================================================================== */
 .section-light {
+    background: #ffffff;
+    /* white background */
+    color: var(--clr-dark-bg);
     padding: var(--section-padding);
 }
 
-.section-white {
-    background: #ffffff;
+/* Blue gradient for first section */
+.section-blue {
+    background: linear-gradient(135deg, var(--clr-dark-bg), var(--clr-dark-surface));
+    color: #fff;
     padding: var(--section-padding);
 }
 
@@ -336,28 +341,7 @@ ul {
     padding: var(--section-padding);
 }
 
-/* Personal Section Styling */
-#personal {
-    background: linear-gradient(135deg, var(--clr-dark-bg), var(--clr-dark-surface));
-    color: #fff;
-    padding: var(--section-padding);
-}
 
-#personal h2,
-#personal h3 {
-    color: #fff;
-}
-
-#personal .personal-list li {
-    margin-bottom: 8px;
-    transition: transform 0.3s ease;
-}
-
-#personal .personal-list li.option-card:hover {
-    transform: none;
-    background: transparent;
-    box-shadow: none;
-}
 
 /* Resume Grid & Layout */
 .resume-layout {
