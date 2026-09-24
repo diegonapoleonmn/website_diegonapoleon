@@ -1,280 +1,305 @@
-/* ==========================================================================
-   Master Option Grid Layout (Horizontal on PC, Squares on Mobile)
-   ========================================================================== */
+/* =============================================================
+   Premium Design System for Personal Page
+   -------------------------------------------------------------
+   Features:
+   • Dark mode with CSS variables
+   • Glassmorphism cards with subtle blur & translucency
+   • Smooth gradients and micro‑animations
+   • Modern typography (Inter) via Google Fonts
+   • Responsive auto‑fit grid layout
+   ============================================================= */
 
-/* 1. Desktop Mode: Forces cards left-to-right */
-.option-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    /* Forces exactly 4 columns side-by-side */
-    gap: 20px !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 20px auto !important;
-    box-sizing: border-box !important;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --clr-bg-light: #f0f4f8;
+  --clr-bg-dark: #1a1b2e;
+  --clr-surface-light: rgba(255, 255, 255, 0.65);
+  --clr-surface-dark: rgba(30, 30, 45, 0.65);
+  --clr-text-light: #2d2d2d;
+  --clr-text-dark: #e0e0e0;
+  --clr-accent: #00bcd4;
+  /* teal */
+  --clr-card-hover: rgba(255, 255, 255, 0.15);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.25s ease;
 }
 
-/* Ensure cards don't have broken heights on PC */
-.option-grid .option-card {
-    height: 220px !important;
-    /* Clean height for desktop view */
-    width: 100% !important;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-bg: var(--clr-bg-dark);
+    --clr-surface: var(--clr-surface-dark);
+    --clr-text: var(--clr-text-dark);
+  }
 }
 
-/* 2. Mobile Mode: Switches to vertical stack with perfect squares */
-@media (max-width: 768px) {
-    .option-grid {
-        grid-template-columns: 1fr !important;
-        /* Switches layout to 1 single column */
-        gap: 15px !important;
-        padding: 0 10px !important;
-    }
-
-    .option-grid .option-card {
-        width: 100% !important;
-        max-width: 340px !important;
-        /* Keeps squares from getting too huge on big phones */
-        margin: 0 auto !important;
-        /* Centers the squares on the screen */
-
-        /* THE MAGIC SQUARE LINES */
-        aspect-ratio: 1 / 1 !important;
-        height: auto !important;
-        /* Overrides the PC desktop height */
-    }
+@media (prefers-color-scheme: light) {
+  :root {
+    --clr-bg: var(--clr-bg-light);
+    --clr-surface: var(--clr-surface-light);
+    --clr-text: var(--clr-text-light);
+  }
 }
 
-/* ==========================================================================
-   Base Layout & Grid Configuration (Forces cards left-to-right)
-   ========================================================================== */
+/* Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
-    background-color: #f9fafb;
-    color: #333333;
-    margin: 0;
-    padding: 0;
+  font-family: var(--font-primary);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* This targets the container and forces cards to align side-by-side */
-.simple-page {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
-    grid-auto-flow: row !important;
-    /* Explicitly forces cards left-to-right first */
-    gap: 20px;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    width: 100%;
-    box-sizing: border-box;
+/* Section basics */
+section {
+  padding: 4rem 1rem;
+  position: relative;
 }
 
-/* Ensure child elements behave correctly inside the grid row */
-.simple-page>div,
-.simple-page>a {
-    width: 100%;
-    box-sizing: border-box;
+.section-blue {
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: #fff;
 }
 
-/* Add spacing between text elements if any exist */
-.simple-page h1,
-.simple-page h2,
-.simple-page h3,
-.simple-page p,
-.simple-page ul,
-.simple-page ol {
-    margin-bottom: 1rem;
+.section-light {
+  background: var(--clr-surface);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 1120px;
+  box-shadow: var(--shadow-card);
 }
 
-/* ==========================================================================
-   Section backgrounds & Headings
-   ========================================================================== */
+/* White background section for blog */
 .section-white {
-    background: #ffffff;
-    padding: var(--section-padding);
-}
-
-.section-gray {
-    background: #f2f2f2;
-    padding: var(--section-padding);
+  background: #fff;
+  color: var(--clr-text-dark);
+  padding: 4rem 1rem;
 }
 
 .section-header h1,
-h1 {
-    color: #ffffff;
-    margin: 0;
+.section-header h2 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  margin-top: 2rem; /* added to lower Metas title */
 }
 
-.section-header h2,
-h2 {
-    color: #2c3e50;
-    margin: 0;
+/* Additional spacing for Metas title */
+#metas .section-header { margin-top: 4rem; }
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* ==========================================================================
-   Option Cards Base Styles
-   ========================================================================== */
+/* Option grid (cards) */
+.option-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-top: 2rem;
+}
+
 .option-card {
-    position: relative;
-    background: transparent;
-    overflow: hidden;
-    border-radius: 12px;
-    border: none;
-    height: 200px;
-    /* original button height */
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-    transition: transform .3s ease, background-size .3s ease, box-shadow .3s ease;
-    text-decoration: none;
-    /* Removes link underline */
-    box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  height: 260px;
+  background: var(--clr-surface);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
-/* Dark overlay for better text contrast */
-.option-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 12px;
-    z-index: 0;
+/* Goal cards: horizontal rectangle, smaller */
+.goal-card {
+  height: auto;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background: #2c3e50;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Ensure card content appears above overlay */
-.option-card .card-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    text-align: left;
+/* Smaller text for goal cards */
+.goal-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+.goal-card p {
+  font-size: 0.85rem;
 }
 
-/* Hover animation – subtle lift and scale */
-.option-card:hover {
-    background-size: 115%;
-    /* subtle zoom of background image */
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+/* Ensure Metas section uses solid dark blue (same as navigation) */
+#metas.section-blue {
+  background: var(--clr-dark-bg);
 }
 
-/* ==========================================================================
-   Card Image Exception (Built-in Gradients)
-   ========================================================================== */
-.swim-card {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/swim.jpg') !important;
+
+/* Compact grid for metas section */
+#metas .section-header {
+  margin-top: 5rem; /* lower the Metas title further */
 }
 
+
+/* Reduce padding for metas section */
+#metas {
+  padding: 2rem 0;
+}
+
+/* card background images */
 .physical-card {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/physical_activities.jpg') !important;
+  background-image: url('images/physical_activities.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.travels-card {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%), url('images/travels.jpg') !important;
+.swim-card {
+  background-image: url('images/swim.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.boardgames-card {
-    background-image: url('images/boardgames.jpg') !important;
+/* overlay for readability */
+.option-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  z-index: 0;
 }
 
-/* Text styles inside the option cards */
+.option-card .card-content {
+  position: relative;
+  z-index: 1;
+}
+
 .option-card h3 {
-    color: #ffffff !important;
-    font-size: 1.3rem;
-    margin: 0 0 4px 0;
-    font-weight: 600;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
 }
 
 .option-card p {
-    color: #e0e0e0;
-    font-size: 0.9rem;
-    margin: 0;
-    font-weight: 400;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 0.95rem;
+  color: #e0e0e0;
 }
 
-/* ==========================================================================
-   Link Cards & Image styles
-   ========================================================================== */
-.opt.link-card {
-    background: #fff;
-    border: 1px solid #eaeaea;
-    padding: 25px;
-    border-radius: 8px;
-    text-align: center;
+.option-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: var(--clr-card-hover);
 }
 
-.link-card:hover {
-    border-color: var(--clr-accent);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 245, 212, 0.05);
+/* Links grid (blog cards) */
+.links-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
 }
 
-.link-card:hover .card-image img {
-    opacity: 1;
+.link-card {
+  background: #fff;
+  color: var(--clr-text-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .link-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: var(--clr-dark-bg);
+  color: var(--clr-text-dark);
 }
 
-.link-card p {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.section-light img {
-    max-width: 100%;
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
+.link-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .link-card .card-image {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 6px;
-    margin-bottom: 10px;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
 }
 
 .link-card .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-fast);
+}
+
+.link-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.link-card:hover .card-image img {
+  opacity: 0.9;
+}
+
+.link-card h4 {
+  font-size: 1.1rem;
+  margin: 0.75rem;
+  color: var(--clr-accent);
+}
+
+.link-card p {
+  font-size: 0.9rem;
+  margin: 0 0.75rem 0.75rem;
+  color: var(--clr-text);
 }
 
 .back-btn {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 8px 16px;
-    background: var(--clr-accent);
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--clr-accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
-.simple-page ul {
-    list-style-type: disc;
-    padding-left: 25px;
+.back-btn:hover {
+  background: #0097a7;
+  transform: translateY(-2px);
 }
 
-.simple-page li {
-    display: list-item;
-    margin-bottom: 0.35rem;
+ul,
+ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .personal-bottom {
-    background-color: #f0f2f5;
-    padding: 40px 5%;
-    text-align: center;
-    color: #555;
-    border-top: 1px solid #e2e4e8;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
